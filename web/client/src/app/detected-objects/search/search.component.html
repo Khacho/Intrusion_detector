@@ -1,0 +1,31 @@
+<div class="col-md-3">
+    <div class="search">
+        <div class="hidden-md hidden-lg">
+            <button class="search-icon glyphicon glyphicon-search" (click)="openNav()" *ngIf="isSearchbarOpen"></button>
+            <div id="searchbar" class="sidenav">
+                <button type="button" class="close-icon close" aria-label="Close" (click)="closeNav()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                <label for="">Camera name</label>
+                <input [(ngModel)]="cameraName" type="text" placeholder="Enter camera name" class="input" #camNameMobile>
+                <label for="">Object type</label>
+                <input [(ngModel)]="objectType" type="text" placeholder="Enter object type" class="input" #objTypeMobile>
+                <label for="">Date range</label>
+                <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event)" class="input" [(ngModel)]="dateRange" />
+                <button class="search-button glyphicon glyphicon-search" (click)="search()" [disabled]="this.dateRange === undefined && this.cameraName === undefined && this.objectType === undefined"></button>
+                <button class="search-button glyphicon glyphicon-trash" (click)="reset($event)" #resetMobileLabel [disabled]="this.dateRange === undefined && this.cameraName === undefined && this.objectType === undefined"></button>
+            </div>
+        </div>
+        <div class="search-col hidden-sm hidden-xs">
+            <label for="">Camera name</label>
+            <input [(ngModel)]="cameraName" type="text" placeholder="Enter camera name" class="input" #camName>
+            <label for="">Object type</label>
+            <input [(ngModel)]="objectType" type="text" placeholder="Enter object type" class="input" #objType>
+            <label for="">Date range</label>
+            <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event)" class="input" #myDate [(ngModel)]="dateRange" />
+            <button class="search-button glyphicon glyphicon-search" (click)="search()" [disabled]="this.dateRange === undefined && this.cameraName === undefined && this.objectType === undefined"></button>
+            <button class="search-button glyphicon glyphicon-trash" (click)="reset($event)" #resetLabel [disabled]="this.dateRange === undefined && this.cameraName === undefined && this.objectType === undefined"></button>
+        </div>
+    </div>
+</div>
+<id-error-modal></id-error-modal>
